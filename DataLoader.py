@@ -26,7 +26,7 @@ import pickle
 import torch
 import math
 import h5py
-from utils.utils.HCG import HCG_generator
+from utils.HCG import HCG_generator
 from torch.utils.data import Dataset, DataLoader
 from torch.utils.data.dataloader import default_collate
 from IPython import embed
@@ -128,8 +128,10 @@ class QADataLoader(DataLoader):
         relation = json.loads(str(kwargs.pop('relation')))
         concept_property = json.loads(str(kwargs.pop('concept_property')))
         property = json.loads(str(kwargs.pop('property')))
-        with h5py.File(kwargs['concept_h5']+'o_concepts.h5', 'r') as features_file:
-            o_conceps = Concepts[features_file]
+        with h5py.File(kwargs['concept_h5']+'v_concepts.h5', 'r') as features_file:
+            v_conceps = Concepts[features_file]
+        with h5py.File(kwargs['concept_h5']+'l_concepts.h5', 'r') as features_file:
+            l_conceps = Concepts[features_file]
         # with h5py.File(kwargs['concept_h5']+'p_concepts.h5', 'r') as features_file:
         #     p_conceps = Concepts[features_file]
         # with h5py.File(kwargs['concept_h5']+'r_concepts.h5', 'r') as features_file:
@@ -156,7 +158,7 @@ class QADataLoader(DataLoader):
                 continue
         self.feature_h5 = kwargs.pop('feature_h5')
         self.kg = kwargs.pop('kg')
-        self.HCG = HCG_generator(o_conceps.out(), topology, relation, concept_property, property)
+        self.HCG = HCG_generator(v_conceps, l_conceps, topology, relation, concept_property, property)
         self.dataset = QADataset(answers, questions, questions_len, q_image_indices,
                 self.feature_h5, feat_coco_id_to_index, len(vocab['answer_token_to_idx']), use_spatial, self.kg, self.concepts)
         
