@@ -6,7 +6,7 @@ import json
 import numpy as np
 import pickle
 from collections import Counter
-import utils
+from preprocess.utils import FindRelevantTerms
 from nltk.corpus import wordnet as wn
 
 def flatten(list_of_lists):
@@ -30,16 +30,17 @@ print('Loading vocab')
 with open(args.vocab_json, 'r') as f:
     vocab = json.load(f)
 for term in vocab['terms']:
-    synsets = wn.synsets(term)
-    relevant_terms = FindRelevantTerms(synsets)
+    hyperpaths = wn.synsets(term).hypernym_paths()
+    relevant_terms = [synset.name().split(".")[0].replace('_',' ') for synset in hyperpaths]
     augmentation_vocab[term] = relevant_terms
 
 #augmented_terms_perquestion = []
 for i in range(len(vocab['term_per_question'])):
-    augmented_terms = [augmentation_vocab[term] for term in terms]
+    augmented_terms = [augmentation_vocab[term] for term in vocab['term_per_question'][i]]
     augmented_terms = flatten(augmented_terms)
     vocab['term_per_question'][i] = augmented_terms
-
+    vocab['hierarchy_per_question'][i] = [max(len(hyp_path) for hyp_path in wn.synset(term).hypernym_paths()) 
+                                                            for term in augmented_terms]
 
 print('write vocab')
 with open(args.vocab_json, 'w') as f:

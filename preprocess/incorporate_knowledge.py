@@ -7,7 +7,7 @@ import csv
 import itertools
 import pickle
 import json
-from utils import *
+from preprocess.utils import *
 
 csv.field_size_limit(sys.maxsize)
 
@@ -22,6 +22,7 @@ import conceptnet_lite
 import wikitextparser as wtp
 from concept_score import Tfidf, Rels, thres
 from utils.misc import create_PV, create_RM
+from utils import *
 
 def main():
     parser = argparse.ArgumentParser()
