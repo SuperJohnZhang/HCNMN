@@ -45,6 +45,6 @@ python preprocess_concepts.py --input_knowledge_folder /your/path/to/knowledge/s
 
 1. Train the model and get valuation results
 ```
-python train.py --input_dir <path/to/preprocessed/data/folder> --concepts <path/to/preprocessed/concept/folder> --hierarchy <path/to/preprocessed/hierarchy/folder> --concept_property <path/to/concept_property.json> --topology <path/to/topology.json> --relation_list <path/to/relation.json> --property_list <path/to/property.json> --save_dir </path/for/checkpoint> --model HCNMN  --T_ctrl 3 --stack_len 4 --cuda 1 --val
+python train.py --input_dir <path/to/preprocessed/data/folder> --concept <path/to/preprocessed/concept/folder> --concept_property <path/to/concept_property.json> --topology <path/to/topology.json> --relation_list <path/to/relation.json> --property_list <path/to/property.json> --save_dir </path/for/checkpoint> --model HCNMN  --T_ctrl 3 --stack_len 4 --cuda 1 --val
 ```
 
