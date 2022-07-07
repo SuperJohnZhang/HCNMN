@@ -17,7 +17,7 @@ python preprocess_questions.py --glove_pt </path/to/generated/glove/pickle/file>
 
 2. Preprocess vocab.json with ontology information from wordNet to obtain augmented concepts (vocab.json) and the concept hierarchy (hierarchy.json)
 ```
-python vocab_augmentation.py --input_vocab.json </your/input/path/vocab.json> --glove_pt </path/to/generated/glove/pickle/file> --vocab_json </your/output/path/vocab.json> --hierarchy </your/output/path/vocab.json> --wordnet_base
+python vocab_augmentation.py --input_vocab </your/input/path/vocab.json> --glove_pt </path/to/generated/glove/pickle/file> --vocab_json </your/output/path/vocab.json> --hierarchy </your/output/path/vocab.json> --wordnet_base
 ```
 
 3. Combine the WordNet categorical hierarchy (hierarchy.json) with other downloaded knowledge sources to obtain the full hierarchical concept graph topology (topology.json) and the vocab list of cross-concept relationship (relation.json).
