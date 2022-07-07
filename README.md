@@ -22,12 +22,12 @@ python vocab_augmentation.py --input_vocab </your/input/path/vocab.json> --glove
 
 3. Combine the WordNet categorical hierarchy (hierarchy.json) with other downloaded knowledge sources to obtain the full hierarchical concept graph topology (topology.json) and the vocab list of cross-concept relationship (relation.json).
 ```
-python knowledge_incorporation.py --input_vocab.json </your/input/path/vocab.json> --knowledge_dir </your/input/knowledge/dir> --glove_pt </path/to/generated/glove/pickle/file> --input_hierarchy </your/input/hierarchy.json> --topology_json </your/output/path/topology.json> --relation_vocab </your/output/path/relation.json> --hierarchy
+python knowledge_incorporation.py --input_vocab </your/input/path/vocab.json> --knowledge_dir </your/input/knowledge/dir> --glove_pt </path/to/generated/glove/pickle/file> --input_hierarchy </your/input/hierarchy.json> --topology_json </your/output/path/topology.json> --relation_vocab </your/output/path/relation.json> --hierarchy
 ```
 
 4. Extract distinguishable concept property (concept_property.json) vectors and property list (property.json) by incorporation knowledge with all downloaded knowledge sources.
 ```
-python knowledge_incorporation.py --input_vocab.json </your/input/path/vocab.json> --knowledge_dir </your/input/knowledge/dir> --glove_pt </path/to/generated/glove/pickle/file> --property_vocab </your/output/path/property.json> --concept_property </your/output/path/concept_property.json>  --property
+python knowledge_incorporation.py --input_vocab </your/input/path/vocab.json> --knowledge_dir </your/input/knowledge/dir> --glove_pt </path/to/generated/glove/pickle/file> --property_vocab </your/output/path/property.json> --concept_property </your/output/path/concept_property.json>  --property
 ```
 
 5. Download grounded features from paper LXMERT [repo](https://github.com/airsplay/lxmert.git)

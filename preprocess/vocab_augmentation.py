@@ -40,9 +40,10 @@ for i in range(len(vocab['term_per_question'])):
     augmented_terms = flatten(augmented_terms)
     vocab['term_per_question'][i] = augmented_terms
 
+
 print('write vocab')
 with open(args.vocab_json, 'w') as f:
-    vocab = json.dump(vocab)
+    json.dump(vocab, f)
 
 with open(args.hierarchy, 'w') as f:
-    vocab = json.dump(augmentation_vocab)
+    json.dump(augmentation_vocab, f)

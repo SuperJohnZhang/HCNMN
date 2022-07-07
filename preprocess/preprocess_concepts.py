@@ -27,10 +27,10 @@ from utils.misc import create_PV, create_RM
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--output_folder', required=True)
-    parser.add_argument('--input_knowledge_folder', required=True, help='path to knowledge sources')
+    parser.add_argument('--input_vocab', required=True, help='path to vocab.json')
     parser.add_argument('--glove_pt', help='glove pickle file, should be a map whose key are words and value are word vectors represented by numpy arrays. Only needed in train mode')
-    parser.add_argument('--mavex_pt', help='mavex pickle file features')
+    parser.add_argument('--vocab_json', required=True, help='path to output vocab')
+    parser.add_argument('--hierarchy', required=True, help='path to output hierarchy')
     args = parser.parse_args()
     assert os.path.isdir(args.input_knowledge_folder)
 
